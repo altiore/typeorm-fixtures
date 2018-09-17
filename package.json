@@ -1,0 +1,28 @@
+{
+  "name": "typeorm-fixtures",
+  "version": "0.1.0",
+  "description": "Fixtures helper for typeorm",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/altiore/typeorm-fixtures.git"
+  },
+  "keywords": [
+    "typeorm",
+    "fixtures",
+    "fixture",
+    "helper"
+  ],
+  "author": {
+    "name": "Razzwan",
+    "email": "razvanlomov@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altiore/typeorm-fixtures/issues"
+  },
+  "homepage": "https://github.com/altiore/typeorm-fixtures#readme"
+}
