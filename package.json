@@ -2,8 +2,10 @@
   "name": "typeorm-fixtures",
   "version": "0.1.0",
   "description": "Fixtures helper for typeorm",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "rm -rf dist && tsc",
     "test": "test"
   },
   "repository": {
@@ -24,5 +26,33 @@
   "bugs": {
     "url": "https://github.com/altiore/typeorm-fixtures/issues"
   },
-  "homepage": "https://github.com/altiore/typeorm-fixtures#readme"
+  "homepage": "https://github.com/altiore/typeorm-fixtures#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.116",
+    "husky": "^1.0.0-rc.14",
+    "lint-staged": "^7.2.2",
+    "lodash": "^4.17.11",
+    "prettier": "1.14.2",
+    "typeorm": "^0.2.7",
+    "typescript": "^3.0.3"
+  },
+  "peerDependencies": {
+    "typeorm": "^0.2.7",
+    "lodash": "^4.17.11"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write --print-width 120 --trailing-comma all --single-quote --parser typescript --arrow-parens always",
+      "git add"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
