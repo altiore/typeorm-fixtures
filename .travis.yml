@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - >=8.11.3
+  - 8.11.3
 before_install:
-  - npm install -g npm@stable
+  - npm install -g npm@latest
 rvm:
  - echo 'Hello Razzwan!'
