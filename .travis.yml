@@ -1,5 +1,11 @@
 language: node_js
 node_js:
-  - 8.11.3
-rvm:
- - echo 'Hello Razzwan!'
+- 8.11.3
+deploy:
+  secret: 
+  provider: npm
+  email: altiore.public@gmail.com
+  tag: next
+env:
+  global:
+    secure: S5qy2FFtsnUqhvRo0tf5XMmjMtT2T8g8Nfsf2yUJcRq35A3ovWq9WtPm6L0vW6ONxKXN3sxQ+gu7TV3SbsEgnipN3l1u+FhpgfuWZXozsnlCUPfRE3A/2jXtdoIWR/MWHSYCljy5bTceQ117H4YcNwPcP0OlqoZ+yFwbzlBPeCRc0CBP9pSCaD/JE6iXHe5uSCnSy3tfv/GnJkxjNaDw1+7wGqow6LlzQGI0HJju+t1s1QaAWNGCRftCJtR0+X1TcDQ73nyTTThck1GbpwDJtun3lA9MoJ+LQJay8pMbNkGVY7BMF8LTUBbToCYlEDCXg54ypA21WHDUXLiAxHbyelWMuJ9jw3keH9EA1EOKV75yi9XOyNjZb4vgntSRHZmfe4QNCRdydkRQzHYFTmvyilP+9D3LnEtG1MwWjka0u2Gc1U+c4x1owdEpL8lipzxQr36IpjoHbdjeomwEmgvSQnq3BRvbGn5HPyqROVjq9SnBLu2utRTcn06PzPrxPPS+DwY7nsCvhrHeIDEZZIttEkFI9rQnpMAk81vlr09YuxFxxRPyfXiVyJuA3ZDcAXGEpqr+NPSDaVycYK14FPuUimRVFDA3LHleShudHyoJAbL03OPJ9GIeaPFnhhAjVvrFF3nHEJmjpXdj5dGg3wjYzZqps6Up8mAFNs7MpxnO880=
