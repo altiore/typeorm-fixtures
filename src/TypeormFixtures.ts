@@ -66,7 +66,7 @@ export class TypeormFixtures<AllFixtures = any[]> {
     const config = require(`${process.cwd()}/ormconfig.js`);
     if (config) {
       this.connection = await createConnection({
-        name: 'TypeormFixtures',
+        name: 'FixturesHelper',
         ...(config as ConnectionOptions),
       });
     } else {

@@ -1,3 +1,3 @@
-export * from './TypeormFixtures';
-export * from './fixtureCreator';
 export * from './getRelation';
+export * from './fixtureCreator';
+export * from './TypeormFixtures';
