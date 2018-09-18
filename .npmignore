@@ -1,0 +1,5 @@
+.travis.yml
+.gitignore
+package-lock.json
+tslint.json
+node_modules

@@ -1,6 +1,6 @@
-import { intersectionWith, isMatch } from 'lodash';
+import { isMatch, intersectionWith } from 'lodash';
 
-export function getRelation<EntityType>(
+export function relation<EntityType>(
   this: EntityType | EntityType[],
   fixtureName: string,
   entity,
