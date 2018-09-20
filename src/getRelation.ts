@@ -1,8 +1,12 @@
 import { isMatch, intersectionWith } from 'lodash';
 import { ObjectType } from 'typeorm';
 
-export function relation<EntityType>(relationType: ObjectType<EntityType>, relation): EntityType[] {
-  return (this[relationType.name] && relation
-    ? intersectionWith(this[relationType.name], relation, isMatch)
-    : this[relationType.name] || []) as EntityType[];
+export function relation<EntityType>(
+  allRelations: object,
+  relationType: ObjectType<EntityType>,
+  relation,
+): EntityType[] {
+  return (allRelations[relationType.name] && relation
+    ? intersectionWith(allRelations[relationType.name], relation, isMatch)
+    : allRelations[relationType.name] || []) as EntityType[];
 }
