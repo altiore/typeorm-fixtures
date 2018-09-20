@@ -4,5 +4,6 @@ src
 .travis.yml
 .gitignore
 package-lock.json
+tsconfig.json
 tslint.json
 node_modules
