@@ -1,4 +1,14 @@
-import { Connection, ConnectionOptions, createConnection, getConnection, In, ObjectType } from 'typeorm';
+import {
+  Connection,
+  ConnectionOptions,
+  createConnection,
+  DeleteResult,
+  FindConditions,
+  getConnection,
+  In,
+  ObjectID,
+  ObjectType,
+} from 'typeorm';
 
 export class TypeormFixtures<AllFixtures = any[]> {
   public entities: Record<string, any[]> = {};
@@ -75,11 +85,28 @@ export class TypeormFixtures<AllFixtures = any[]> {
     return this;
   }
 
+  public async removeCreated<EntityType>(
+    Entity: ObjectType<EntityType>,
+    criteria:
+      | string
+      | string[]
+      | number
+      | number[]
+      | Date
+      | Date[]
+      | ObjectID
+      | ObjectID[]
+      | FindConditions<EntityType>,
+  ): Promise<DeleteResult> {
+    const repoForRemove = this.connection.getRepository(Entity);
+    return await repoForRemove.delete(criteria);
+  }
+
   private async getConnection() {
     const config = require(`${process.cwd()}/ormconfig.js`);
     if (config) {
       this.connection = await createConnection({
-        name: 'FixturesHelper',
+        name: TypeormFixtures.name,
         ...(config as ConnectionOptions),
       });
     } else {
