@@ -4,6 +4,7 @@ import {
   createConnection,
   DeleteResult,
   FindConditions,
+  FindOneOptions,
   getConnection,
   In,
   ObjectID,
@@ -100,6 +101,16 @@ export class TypeormFixtures<AllFixtures = any[]> {
   ): Promise<DeleteResult> {
     const repoForRemove = this.connection.getRepository(Entity);
     return await repoForRemove.delete(criteria);
+  }
+
+  public async findOneExisting<EntityType>(Entity: ObjectType<EntityType>, criteria): Promise<EntityType> {
+    const repo = this.connection.getRepository(Entity);
+    return await repo.findOne(criteria);
+  }
+
+  public async findManyExisting<EntityType>(Entity: ObjectType<EntityType>, criteria): Promise<EntityType[]> {
+    const repo = this.connection.getRepository(Entity);
+    return await repo.find(criteria);
   }
 
   private async getConnection() {
