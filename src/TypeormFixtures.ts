@@ -32,7 +32,7 @@ export class TypeormFixtures<AllFixtures = any[]> {
           this.entities[findEntityName],
         );
     }
-    for (const entityName of Object.keys(this.fixtures)) {
+    for (const entityName of Object.keys(this.fixtures).reverse()) {
       const { fixtures, Entity } = this.fixtures[entityName];
       currentRepo = this.connection.getRepository(Entity);
       const preparedData = fixtures(this.entities).map((entity) => {
