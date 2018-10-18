@@ -117,6 +117,10 @@ yarn add typeorm-fixtures --dev
 
 - Author - [Razzwan](https://t.me/Razzwan)
 
+## Thanks for helping
+
+- [Artem Batura](https://github.com/artemirq)
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
