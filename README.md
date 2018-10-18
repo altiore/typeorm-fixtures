@@ -18,7 +18,7 @@ This library helps to solve this problem effortlessly.
 
 ## Usage example:
 
-#### 1. Create fixture creators
+#### 1. Create fixture creators (only once per project)
 
 ```typescript
 import { fixtureCreator, many, one } from "typeorm-fixtures";
@@ -53,7 +53,7 @@ export const createProjectsFixture = fixtureCreator<Project>(Project, function(
 });
 ```
 
-#### 2. Create fixtures
+#### 2. Create fixtures (each time for certain test)
 
 ```typescript
 export const usersFixture = createUsersFixture([
