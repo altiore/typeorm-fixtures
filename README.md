@@ -93,9 +93,8 @@ describe(`GET /url`, async () => {
     projectId = h.entities.Project[0].id; // this is our project id, which was loaded
     user = h.entities.User.find(el => el.email === "user@mail.com"); // we also can find loaded user by email
   });
-  afterAll(async () => {
-    await h.dropFixtures();
-  });
+
+  afterAll(h.dropFixtures);
 
   it("test", async () => {
     // now all data loaded to database and you can perform any actions here
