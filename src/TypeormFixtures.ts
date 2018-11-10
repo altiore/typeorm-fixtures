@@ -114,7 +114,11 @@ export class TypeormFixtures<AllFixtures = any[]> {
   }
 
   private async getConnection() {
-    const config = require(`${process.cwd()}/ormconfig.js`);
+    let config = null;
+    try {
+        config = require(`${process.cwd()}/ormconfig.js`);
+    } catch(er) {
+    }
     if (config) {
       this.connection = await createConnection({
         name: TypeormFixtures.name,
