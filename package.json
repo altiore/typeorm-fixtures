@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc",
+    "new:version": "npm version patch && npm publish && git push origin master && git push --tags",
     "test": "npm run build",
     "prepublish": "npm run build"
   },
