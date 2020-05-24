@@ -13,7 +13,7 @@ import {
 
 export class TypeormFixtures<AllFixtures = any[]> {
   public entities: Record<string, any[]> = {};
-  private connection: Connection;
+  public connection: Connection;
   private fixtures: Record<string, { fixtures: (loadedFixtures: any) => any[]; Entity: ObjectType<any> }> = {};
   private findFixtures: Record<string, { findCondition: any; Entity: ObjectType<any> }> = {};
 
@@ -116,9 +116,8 @@ export class TypeormFixtures<AllFixtures = any[]> {
   private async getConnection() {
     let config = null;
     try {
-        config = require(`${process.cwd()}/ormconfig.js`);
-    } catch(er) {
-    }
+      config = require(`${process.cwd()}/ormconfig.js`);
+    } catch (er) {}
     if (config) {
       this.connection = await createConnection({
         name: TypeormFixtures.name,
