@@ -62,6 +62,11 @@ export class TypeormFixtures<AllFixtures = any[]> {
         }
       }
       await this.connection.close();
+
+      this.entities = null;
+      this.connection = null;
+      this.fixtures = null;
+      this.findFixtures = null;
     } catch (e) {
       if (this.debug) console.log('dropFixtures ERROR', e);
       throw e;
