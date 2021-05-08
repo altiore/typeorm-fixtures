@@ -36,11 +36,11 @@
     "lint-staged": "7.3.0",
     "lodash": "^4.17.15",
     "prettier": "1.14.2",
-    "typeorm": "0.2.22",
+    "typeorm": "0.2.25",
     "typescript": "3.7.5"
   },
   "peerDependencies": {
-    "typeorm": "0.2.22",
+    "typeorm": "0.2.25",
     "lodash": "4.17.15"
   },
   "husky": {
