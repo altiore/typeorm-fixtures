@@ -7,7 +7,6 @@ import {
   ObjectID,
   ObjectType,
   createConnection,
-  getConnection,
 } from 'typeorm';
 
 export class TypeormFixtures<AllFixtures = any[]> {
@@ -49,11 +48,13 @@ export class TypeormFixtures<AllFixtures = any[]> {
       this.entities[entityName] = await currentRepo.save(preparedData);
       this.showInfo(`${TypeormFixtures.name}.loadFixtures: loaded fixture ${entityName}`, this.entities[entityName]);
     }
+    await this.connection.close();
     return this.entities;
   };
 
   public dropFixtures = async (): Promise<void> => {
     try {
+      await this.getConnection();
       let currentRepo;
       for (const entityName of Object.keys(this.fixtures).reverse()) {
         const { Entity } = this.fixtures[entityName];
@@ -162,7 +163,9 @@ export class TypeormFixtures<AllFixtures = any[]> {
           ...(config as ConnectionOptions),
         });
       } else {
-        this.connection = getConnection();
+        throw new Error(
+          'Could not create connection because of ormconfig.ts/js file was not found and config was not provided to constructor',
+        );
       }
 
       this.showInfo(`${TypeormFixtures.name}.getConnection`);
