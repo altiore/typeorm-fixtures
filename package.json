@@ -1,6 +1,6 @@
 {
   "name": "typeorm-fixtures",
-  "version": "0.8.8",
+  "version": "1.0.0",
   "description": "Fixtures helper for typeorm",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,7 @@
     "husky": "4.2.1",
     "lint-staged": "7.3.0",
     "lodash": "^4.17.15",
-    "prettier": "1.14.2",
+    "prettier": "2.5.1",
     "typeorm": "0.2.25",
     "typescript": "3.7.5"
   },

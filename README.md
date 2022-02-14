@@ -28,29 +28,29 @@ import { Project } from "../.."; // this is typeorm Entity
 import { User } from "../.."; // this is typeorm Entity
 
 // NOTICE: not arrow function here!
-export const createUsersFixture = fixtureCreator<User>(User, function(
-  entity,
-  index
-) {
-  return {
-    email: `test${index}@mail.com`,
-    status: 10,
-    ...entity,
-    roles: many(this, Role, entity.roles)
-  };
-});
+export const createUsersFixture = fixtureCreator<User>(
+  User,
+  function (entity, index) {
+    return {
+      email: `test${index}@mail.com`,
+      status: 10,
+      ...entity,
+      roles: many(this, Role, entity.roles),
+    };
+  }
+);
 
 // NOTICE: not arrow function here!
-export const createProjectsFixture = fixtureCreator<Project>(Project, function(
-  entity,
-  index
-) {
-  return {
-    title: `Default Title`,
-    ...entity,
-    owner: one(this, User, entity.owner)
-  };
-});
+export const createProjectsFixture = fixtureCreator<Project>(
+  Project,
+  function (entity, index) {
+    return {
+      title: `Default Title`,
+      ...entity,
+      owner: one(this, User, entity.owner),
+    };
+  }
+);
 ```
 
 #### 2. Create fixtures (each time for certain test)
@@ -59,18 +59,18 @@ export const createProjectsFixture = fixtureCreator<Project>(Project, function(
 export const usersFixture = createUsersFixture([
   {
     email: "user@mail.com",
-    roles: [{ name: "user" }] // roles will automatically added here (look usage)
+    roles: [{ name: "user" }], // roles will automatically added here (look usage)
   },
   {
     email: "admin@mail.com",
-    roles: [{ name: "user" }, { name: "admin" }]
-  }
+    roles: [{ name: "user" }, { name: "admin" }],
+  },
 ]);
 
 export const projectsFixture = createProjectsFixture([
   {
-    owner: { email: "admin@mail.com" } // owner will automatically linked with user above
-  }
+    owner: { email: "admin@mail.com" }, // owner will automatically linked with user above
+  },
 ]);
 ```
 
@@ -79,7 +79,9 @@ export const projectsFixture = createProjectsFixture([
 ```typescript
 import { TypeormFixtures } from "typeorm-fixtures";
 
-const h = new TypeormFixtures()
+// typeormf config from js/ts file or any other if required
+const typeormConfig = {};
+const h = new TypeormFixtures(false, typeormConfig)
   .findEntities({ name: In(["user", "admin"]) }, Role) // sequence is important here!
   .addFixture(usersFixture) // sequence is important here!
   .addFixture(projectsFixture); // sequence is important here!
@@ -91,7 +93,7 @@ describe(`GET /url`, async () => {
   beforeAll(async () => {
     await h.loadFixtures();
     projectId = h.entities.Project[0].id; // this is our project id, which was loaded
-    user = h.entities.User.find(el => el.email === "user@mail.com"); // we also can find loaded user by email
+    user = h.entities.User.find((el) => el.email === "user@mail.com"); // we also can find loaded user by email
   });
 
   afterAll(h.dropFixtures);
