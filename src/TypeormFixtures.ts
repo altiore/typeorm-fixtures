@@ -108,16 +108,19 @@ export class TypeormFixtures<AllFixtures = any[]> {
       | ObjectID[]
       | FindConditions<EntityType>,
   ): Promise<DeleteResult> {
+    await this.getConnection();
     const repoForRemove = this.connection.getRepository(Entity);
     return await repoForRemove.delete(criteria);
   }
 
   public async findOneExisting<EntityType>(Entity: ObjectType<EntityType>, criteria): Promise<EntityType> {
+    await this.getConnection();
     const repo = this.connection.getRepository(Entity);
     return await repo.findOne(criteria);
   }
 
   public async findManyExisting<EntityType>(Entity: ObjectType<EntityType>, criteria): Promise<EntityType[]> {
+    await this.getConnection();
     const repo = this.connection.getRepository(Entity);
     return await repo.find(criteria);
   }
