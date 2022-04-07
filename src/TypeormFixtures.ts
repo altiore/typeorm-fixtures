@@ -126,7 +126,7 @@ export class TypeormFixtures<AllFixtures = any[]> {
   }
 
   public async close() {
-    if (this.connection) {
+    if (this.connection?.isConnected) {
       await this.connection.close();
     }
 
@@ -137,6 +137,10 @@ export class TypeormFixtures<AllFixtures = any[]> {
   }
 
   private async getConnection() {
+    if (this.connection?.isConnected) {
+      return this.connection;
+    }
+
     let config = null;
     try {
       if (this.config) {
